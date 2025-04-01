@@ -4,9 +4,8 @@ Flappy Bird is a simple yet challenging arcade game where you control a bird and
 tapping or pressing a key to make it jump. The goal is to survive as long as possible and achieve the highest score.
 
 ---
-## Screenshots
-![Screenshot 2025-04-01 194857.png](data/images/Screenshot%202025-04-01%20194857.png)
-![Screenshot 2025-04-01 194919.png](data/images/Screenshot%202025-04-01%20194919.png)
+![Flappy Bird](https://github.com/user-attachments/assets/311eade2-d946-443e-90dc-2db156c03938)
+
 
 ---
 ## 🛠️ Technologies Used
