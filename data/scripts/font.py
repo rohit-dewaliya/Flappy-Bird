@@ -30,7 +30,7 @@ class Font():
             else:
                 self.image_x_size += 1
 
-    def find_width(self, string, text_spacing = 3):
+    def get_width(self, string, text_spacing = 3):
         width = 0
 
         for character in string:

@@ -31,6 +31,13 @@ class PipeManager:
         for _ in range(0, self.pipe_number):
             self.add_another_pipe()
 
+    def check_points(self, bird_rect):
+        score_increased = False
+        for _, pipe in enumerate(self.pipes_data):
+            if pipe.check_points(bird_rect):
+                score_increased = True
+        return score_increased
+
     def update_pipes(self, display, bird_rect):
         for _, pipe in enumerate(self.pipes_data):
             pipe.update_pos(self.speed)
@@ -49,9 +56,16 @@ class Pipe:
         self.image = load_image(f'pipes/pipe_{pipe_number}.png')
         self.image = scale_image_size(self.image, self.image.get_width(), self.height)
         self.rect = pygame.Rect(self.x, self.y, self.image.get_width(), self.height)
+        self.passed_bird = False
 
     def check_disappearence(self):
         if self.x < -300:
+            return True
+        return False
+
+    def check_points(self, bird_rect):
+        if not self.passed_bird and (self.x + self.image.get_width() < bird_rect.x):
+            self.passed_bird = True
             return True
         return False
 
