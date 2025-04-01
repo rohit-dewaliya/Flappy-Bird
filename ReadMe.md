@@ -7,6 +7,7 @@ tapping or pressing a key to make it jump. The goal is to survive as long as pos
 ## Screenshots
 ![Screenshot 2025-04-01 194857.png](data/images/Screenshot%202025-04-01%20194857.png)
 ![Screenshot 2025-04-01 194919.png](data/images/Screenshot%202025-04-01%20194919.png)
+
 ---
 ## 🛠️ Technologies Used
 

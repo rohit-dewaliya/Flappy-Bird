@@ -42,8 +42,8 @@ class Game:
         self.jump = load_sound('jump.wav')
 
         pygame.mixer.music.load('data/sounds/background music.mp3')
-        # pygame.mixer.music.play(-1)
-        # pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.4)
 
         self.bird = Bird(self.display_size[0] // 2, self.display_size[1] // 2, 0, 0)
         self.pipe_manager = PipeManager(self.display_size)
