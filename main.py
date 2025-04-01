@@ -1,11 +1,20 @@
 import pygame
-from pygame import K_SPACE
+from pygame.locals import *
 
 from data.scripts.clock import Clock
 from data.scripts.font import Font
 from data.scripts.image_functions import load_image, scale_image_ratio
 from data.scripts.bird import Bird
 from data.scripts.pipe import PipeManager
+
+pygame.init()
+pygame.mixer.init()
+
+def load_sound(file_name):
+    return pygame.mixer.Sound("data/sounds/" + file_name)
+
+def play_sound(sound):
+    pygame.mixer.Sound.play(sound)
 
 
 class Game:
@@ -28,6 +37,13 @@ class Game:
         self.head_fonts = Font('large_font.png', (255, 255, 255), 3)
         self.highest_score_font = Font('large_font.png', (255, 0, 0), 2)
         self.press_font = Font('small_font.png', (255, 255, 255), 1)
+
+        # Music-----------------------------#
+        self.jump = load_sound('jump.wav')
+
+        pygame.mixer.music.load('data/sounds/background music.mp3')
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.4)
 
         self.bird = Bird(self.display_size[0] // 2, self.display_size[1] // 2, 0, 0)
         self.pipe_manager = PipeManager(self.display_size)
@@ -78,10 +94,12 @@ class Game:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     game = False
+                    self.jump.play()
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         game = False
+                        self.jump.play()
 
             self.screen.blit(pygame.transform.scale(self.display, self.size), (0, 0))
             pygame.display.update()
@@ -109,10 +127,12 @@ class Game:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.bird.jump()
+                    self.jump.play()
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.bird.jump()
+                    self.jump.play()
 
             score_width = self.score_fonts.get_width(f'{self.score}', 3)
             score_x = self.display_size[0] - score_width
